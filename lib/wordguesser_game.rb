@@ -20,15 +20,11 @@ class WordGuesserGame
     # valid input
     if (guess_word.nil? || guess_word.empty?)
       raise(ArgumentError)
-    else
-      guess_word.each_char{|s|
-        if((s =~ /[A-Za-z]/)!=0)
-          raise(ArgumentError)
-        end
-      }
+    elsif (guess_word =~ /[A-Za-z]/)!=0
+      raise(ArgumentError)
     end
     # count guesses
-    @count+=1
+  
     guess_word.downcase!
     if @word.include? guess_word
       # already guessed
@@ -43,11 +39,13 @@ class WordGuesserGame
       }
       @word_with_guesses = word_cpy
       @guesses+=guess_word
+      @count+=1
     else
       if @wrong_guesses.include? guess_word
         return false
       end
       @wrong_guesses+=guess_word
+      @count+=1
     end
     return true
   
@@ -55,13 +53,13 @@ class WordGuesserGame
 
   def check_win_or_lose
     if @count<7 
-      if @word==word_with_guesses
+      if @word==@word_with_guesses
         return :win
       else
         return :play
       end
     elsif @count==7
-      if @word==word_with_guesses
+      if @word==@word_with_guesses
         return :win
       else
         return :lose

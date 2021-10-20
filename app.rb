@@ -43,12 +43,18 @@ class WordGuesserApp < Sinatra::Base
     begin
       result = @game.guess(letter)
     rescue ArgumentError
-      flash[:message] = "Invalid guess"
+      flash[:message] = "Invalid guess."
     end
     if result == false
-      flash[:message] = "You have already used that letter"
+      flash[:message] = "You have already used that letter."
     end
-    redirect '/show'
+    if @game.check_win_or_lose==:win
+      redirect '/win'
+    elsif @game.check_win_or_lose==:lose
+      redirect '/lose'
+    else
+      redirect '/show'
+    end
   end
   
   # Everytime a guess is made, we should eventually end up at this route.

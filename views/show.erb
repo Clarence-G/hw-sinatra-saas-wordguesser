@@ -15,6 +15,9 @@
   Word so far:
   <span class="word"><%= @game.word_with_guesses %></span>
 </p>
+<p>
+  Remaining times: <%= 7-@game.count %>
+</p>
 
 <form action="/guess" method="post">
   <div class="form-group row">
