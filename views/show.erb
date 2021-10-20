@@ -15,9 +15,19 @@
   Word so far:
   <span class="word"><%= @game.word_with_guesses %></span>
 </p>
-<p>
-  Remaining times: <%= 7-@game.count %>
-</p>
+
+<div class="app">
+
+<div style="display:inline-block;">Remaining times: <%= 7-@game.count %></div>
+
+<form action="/pay/1" method="get" style="display:inline-block;background:#0f0;margin-left:10px;">
+<button>支付宝</button>
+</form>
+<form action="/pay/10" method="get" style="display:inline-block;background:#0f0;margin-left:10px;">
+<button>微信</button>
+</form>
+
+</div>
 
 <form action="/guess" method="post">
   <div class="form-group row">

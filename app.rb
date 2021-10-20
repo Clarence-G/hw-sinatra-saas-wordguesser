@@ -77,4 +77,8 @@ class WordGuesserApp < Sinatra::Base
     erb :lose # You may change/remove this line
   end
   
+  get '/pay/:num' do |n|
+    @game.count-=Integer(n)
+    redirect '/show'
+  end
 end
