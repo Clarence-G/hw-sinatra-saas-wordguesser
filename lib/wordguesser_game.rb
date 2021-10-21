@@ -39,7 +39,7 @@ class WordGuesserGame
       }
       @word_with_guesses = word_cpy
       @guesses+=guess_word
-      @count+=1
+      # @count+=1
     else
       if @wrong_guesses.include? guess_word
         return false
