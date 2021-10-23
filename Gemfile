@@ -1,4 +1,4 @@
-source 'https://gems.ruby-china.com'
+source 'https://rubygems.org'
 ruby '2.6.6'
 
 gem 'sinatra', '>= 2.0.2'
